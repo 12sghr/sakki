@@ -1,4 +1,4 @@
 .bundle
 node_modules
 .node-version
-sass
+public/css/*
