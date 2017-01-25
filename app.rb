@@ -49,7 +49,7 @@ class App < Sinatra::Base
     def title
       str = ""
       if @entry
-        @entry.title + " - "
+        str = @entry.title + " - "
       end
       str + "blogじゃん？"
     end
