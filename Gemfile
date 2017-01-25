@@ -9,3 +9,9 @@ gem "ridgepole"
 gem "html-pipeline"
 gem "github-markdown"
 gem "rinku"
+
+group :development do
+  gem "guard"
+  gem "guard-rack"
+  gem "guard-gulp"
+end
