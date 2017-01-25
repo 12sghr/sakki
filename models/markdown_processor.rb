@@ -1,9 +1,11 @@
 require_relative "markdown_processor/mention_filter"
+require_relative "markdown_processor/img_filter"
 class MarkdownProcessor
   FILTERS = [
     HTML::Pipeline::MarkdownFilter,
     HTML::Pipeline::AutolinkFilter,
-    MentionFilter
+    MentionFilter,
+    ImgFilter
   ]
 
   def self.call(text, options = {})
