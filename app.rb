@@ -28,9 +28,30 @@ class App < Sinatra::Base
   end
 
   helpers do
+    def protected!
+      unless authorized?
+        response["WWW-Authenticate"] = %(Basic realm="Restriced Area")
+        throw(:halt, [401, "Not authorized\n"])
+      end
+    end
+
+    def authorized?
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? && @auth.basic? && @auth.credentials &&
+      @auth.credentials == ["test", "hogehoge"]
+    end
+
     def entry_repository
       # @ が2個
       @@entry_repository ||= EntryRepository.new(App.database)
+    end
+
+    def title
+      str = ""
+      if @entry
+        @entry.title + " - "
+      end
+      str + "blogじゃん？"
     end
   end
 
@@ -39,10 +60,12 @@ class App < Sinatra::Base
   end
 
   get "/entries/new" do
+    protected!
     slim :new
   end
 
   post "/entries" do
+    protected!
     entry = Entry.new
     entry.title = params[:title]
     entry.body = params[:body]
