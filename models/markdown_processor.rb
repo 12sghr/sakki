@@ -1,3 +1,4 @@
+require 'cgi'
 require_relative "markdown_processor/mention_filter"
 require_relative "markdown_processor/img_filter"
 class MarkdownProcessor
@@ -18,6 +19,7 @@ class MarkdownProcessor
 
   def call(text)
     pipeline = HTML::Pipeline.new(FILTERS, @options)
+    text = CGI.escapeHTML(text)
     pipeline.call(text)
   end
 end
