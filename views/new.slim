@@ -1,4 +1,9 @@
-form(method="POST" action="/entries")
-  input(type="text" name="title")
-  textarea(name="body")
-  input(type="submit" value="作成")
+div.ui.center.aligned.container
+  form(method="POST" action="/entries")
+    ul
+      li
+        input(type="text" name="title" placeholder="記事タイトル")
+      li
+        textarea(name="body" placeholder="本文")
+      li
+        input.ui.button(type="submit" value="作成")

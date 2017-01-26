@@ -1,10 +1,16 @@
-h1= @entry.title
-.ui.two.column.centered.grid
-  .column== @entry.body_html
+div.ui.container.segment
+  h1= @entry.title
+  .ui.piled.segment
+    p== @entry.body_html
+  a href="/entries/#{@entry.id - 1}"
+    button.ui.left.floated.button.large back
+  a href="/entries/#{@entry.id + 1}"
+    button.ui.right.floated.button.large next
 
-footer
+footer.ui.container
   h2 最新記事
-  ul
-    - entry_repository.recent(5).each do |entry|
-      li
-        a(href="/entries/#{entry.id}")= entry.title
+  .ui.cards
+    - entry_repository.recent(4).each do |entry|
+      a.card.ui(href="/entries/#{entry.id}")
+        .content
+          .ui.small.feed= entry.title

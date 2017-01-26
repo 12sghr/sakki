@@ -7,5 +7,31 @@ html {
       width:80%;
       margin:0 auto;
     }
+    img {
+      max-width: 300px;
+    }
+    a.headericon, a.ui	{
+	     text-decoration:none;
+    }
+    a.headericon:link, a.ui {
+	     color : #000000 !important;
+    }
+    a.headericon:visited, a.ui	{
+	     color : #000000 !important;
+    }
+    input, textarea {
+      border-radius: 5px;
+      border-color: gray;
+    }
+    textarea {
+      width: 400px;
+      height: 300px;
+    }
+    form {
+      width: 400px;
+    }
+    ul li {
+      list-style: none;
+    }
   }
 }
