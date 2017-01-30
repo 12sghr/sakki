@@ -13,4 +13,6 @@ footer.ui.container
     - entry_repository.recent(4).each do |entry|
       a.card.ui(href="/entries/#{entry.id}")
         .content
-          .ui.small.feed= entry.title
+          h2.ui.sub.header= entry.title
+        .content
+          h4.ui.sub.header #{entry.body.slice!(0..100)}

@@ -1,5 +1,8 @@
+h2 記事一覧
 .ui.cards
   - entry_repository.recent(128).each do |entry|
-    a.card.ui(href="/entries/#{entry.id}")
+    a.ui.card(href="/entries/#{entry.id}")
       .content
-        .ui.small.feed= entry.title
+        h2.ui.sub.header= entry.title
+      .content
+        h4.ui.sub.header #{entry.body.slice!(0..100)}
