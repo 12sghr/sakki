@@ -2,9 +2,9 @@ div.ui.container.segment
   h1= @entry.title
   .ui.piled.segment
     p== @entry.body_html
-  a href="/entries/#{@entry.id - 1}"
+  a href="/entries/#{@entry.id - 10}"
     button.ui.left.floated.button.large back
-  a href="/entries/#{@entry.id + 1}"
+  a href="/entries/#{@entry.id + 10}"
     button.ui.right.floated.button.large next
 
 footer.ui.container
