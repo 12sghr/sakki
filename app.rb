@@ -26,7 +26,8 @@ class App < Sinatra::Base
   end
 
   def self.database
-    @database ||= Mysql2::Client.new(database_config)
+    @database ||= Mysql2::Client.new(:host => "us-cdbr-iron-east-04.cleardb.net", :username => "bcde534746bbcc", :password => ENV['DATABASE_PASSWORD'], :database => "heroku_f11dc660cd4fd47")
+    # ベタ書きだと動く　config/database.yml 読み込みだとaccess denied
   end
 
   helpers do
