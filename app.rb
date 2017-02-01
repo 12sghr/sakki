@@ -19,6 +19,8 @@ class App < Sinatra::Base
     set :views, settings.root + "/views"
   end
 
+  enable :method_override
+
   def self.database_config
     YAML.load_file("config/database.yml")[ENV['RACK_ENV'] || 'development']
   end
@@ -61,7 +63,14 @@ class App < Sinatra::Base
 
   get "/entries/new" do
     protected!
-    slim :new
+    slim :writing
+  end
+
+  get "/entries/edit/:id" do
+    protected!
+    @entry = entry_repository.fetch(params[:id].to_i)
+
+    slim :writing
   end
 
   post "/entries" do
@@ -71,6 +80,16 @@ class App < Sinatra::Base
     entry.body = params[:body]
     id = entry_repository.save(entry)
 
+    redirect to("/entries/#{id}")
+  end
+
+  put "/entries" do
+    protected!
+    entry = Entry.new
+    entry.id = params[:id]
+    entry.title = params[:title]
+    entry.body = params[:body]
+    id = entry_repository.update(entry)
     redirect to("/entries/#{id}")
   end
 

@@ -26,6 +26,16 @@ class EntryRepository
     return entry
   end
 
+  def update(entry)
+    id = entry.id
+    title = entry.title
+    body = entry.body
+    query = "UPDATE `entries` SET `title` = ?, `body` = ? WHERE `id` = ?"
+    stmt = @db.prepare(query)
+    res = stmt.execute(title, body, id)
+    return id
+  end
+
   def recent(limit = 5)
     query = "SELECT * FROM `entries` ORDER BY `id` DESC LIMIT ?"
     stmt = @db.prepare(query)
