@@ -1,0 +1,29 @@
+html body {
+  font-family: YuGothic;
+  font-size: 30px;
+  width: 100%; }
+  html body div.all {
+    width: 80%;
+    margin: 0 auto; }
+  html body img {
+    max-width: 300px; }
+  html body a.headericon, html body a.ui {
+    text-decoration: none; }
+  html body a.headericon:link, html body a.ui {
+    color: #000000 !important; }
+  html body a.headericon:visited, html body a.ui {
+    color: #000000 !important; }
+  html body input, html body textarea {
+    border-radius: 5px;
+    border-color: gray; }
+  html body textarea {
+    width: 400px;
+    height: 300px; }
+  html body form {
+    width: 400px; }
+  html body ul li {
+    list-style: none; }
+  html body .content {
+    word-wrap: break-word; }
+
+/*# sourceMappingURL=sakki.css.map */
