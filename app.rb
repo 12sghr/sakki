@@ -26,7 +26,7 @@ class App < Sinatra::Base
   end
 
   def self.database
-    @database ||= Mysql2::Client.new(:database_config)
+    @database ||= Mysql2::Client.new(database_config)
   end
 
   helpers do

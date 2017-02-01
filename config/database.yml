@@ -5,3 +5,11 @@ development:
   username: bcde534746bbcc
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: us-cdbr-iron-east-04.cleardb.net
+
+production:
+  adapter: mysql2
+  encoding: utf8mb4
+  database: heroku_f11dc660cd4fd47
+  username: bcde534746bbcc
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: us-cdbr-iron-east-04.cleardb.net
