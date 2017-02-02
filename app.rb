@@ -91,7 +91,15 @@ class App < Sinatra::Base
     entry.title = params[:title]
     entry.body = params[:body]
     id = entry_repository.update(entry)
+
     redirect to("/entries/#{id}")
+  end
+
+  delete "/entries" do
+    protected!
+    entry_repository.delete(params[:delId])
+
+    redirect to("/")
   end
 
   get "/entries/:id" do

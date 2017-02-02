@@ -36,6 +36,12 @@ class EntryRepository
     return id
   end
 
+  def delete(id)
+    query = "DELETE FROM `entries` WHERE `id` = ?"
+    stmt = @db.prepare(query)
+    stmt.execute(id)
+  end
+
   def recent(limit = 5)
     query = "SELECT * FROM `entries` ORDER BY `id` DESC LIMIT ?"
     stmt = @db.prepare(query)

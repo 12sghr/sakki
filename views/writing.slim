@@ -10,6 +10,26 @@ div.ui.center.aligned.container
         li
           input type="hidden" name="id" value="#{@entry.id}"
           input.ui.button(type="submit" value="編集")
+        li
+          input.ui.button type="button" value="削除" id="del"
+
+    form#delForm method="POST" action="/entries"
+      input type="hidden" name="_method" value="DELETE"
+      input type="hidden" name="delId" value="#{@entry.id}"
+
+    .ui.small.modal
+      .ui.icon.red.header
+        i.remove.circle.icon
+        | 記事の削除
+      .content
+        p 確認 : #{@entry.title} を削除
+      .actions
+        .ui.red.cancel.inverted.button
+          i.remove.icon
+          | No
+        .ui.green.ok.inverted.button#yes
+          i.checkmark.icon
+          | Yes
   - else
     form(method="POST" action="/entries")
       ul
@@ -19,3 +39,5 @@ div.ui.center.aligned.container
           textarea(name="body" placeholder="本文")
         li
           input.ui.button(type="submit" value="作成")
+
+script src="/javascript/delete.js"
